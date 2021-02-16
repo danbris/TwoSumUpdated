@@ -22,3 +22,5 @@ obj/project.nuget.cache
 obj/TwoSum.csproj.nuget.dgspec.json
 obj/TwoSum.csproj.nuget.g.props
 obj/TwoSum.csproj.nuget.g.targets
+/bin/Debug/net5.0
+/obj/Debug/net5.0

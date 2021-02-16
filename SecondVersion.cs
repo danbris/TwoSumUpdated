@@ -9,11 +9,13 @@ namespace TwoSum
     /// </summary>
     public class SecondVersion
     {
-        public static string GetResults(int[] input, int sum)
+        public static string GetResults(int[] input, int sum, out int iterationCount)
         {
+            iterationCount = 0;
             var processedItems = new Dictionary<int, int>();
             for (var i = 0; i < input.Length; i++)
             {
+                iterationCount++;
                 var rightValue = sum - input[i];
 
                 if (processedItems.ContainsKey(rightValue))

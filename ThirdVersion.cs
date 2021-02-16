@@ -10,16 +10,18 @@ namespace TwoSum
     /// </summary>
     class ThirdVersion
     {
-        public static string GetResultsByDivide(int[] input, int sum)
+        public static string GetResultsByDivide(int[] input, int sum, out int iterationCount)
         {
+            iterationCount = 0;
             if (input[0] >= sum)
                 return string.Empty;
 
-            for (var i=0;i<input.Length;i++)
+            for (var i = 0; i < input.Length; i++)
             {
+                iterationCount++;
                 var rightValue = sum - input[i];
-                var idxOfRightValue = Array.BinarySearch(input,i+1, input.Length-i-1, rightValue);
-                if (idxOfRightValue >=0)
+                var idxOfRightValue = Array.BinarySearch(input, i + 1, input.Length - i - 1, rightValue);
+                if (idxOfRightValue >= 0)   
                 {
                     return $"{i} - {idxOfRightValue}";
                 }

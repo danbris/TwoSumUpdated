@@ -9,15 +9,16 @@ namespace TwoSum
     /// </summary>
     public class FirstVersion
     {
-        public static string GetResult(int[] input, int sum)
+        private static int _iterationCount = 0;
+        public static string GetResult(int[] input, int sum, out int iterationCount)
         {
-            var result = string.Empty;
-
-            var inputLength = input.Length - 1;
+            _iterationCount = 0;
+               var inputLength = input.Length - 1;
             var lastIndex = inputLength;
 
             for (int i = inputLength; i > 0; i--)
             {
+                _iterationCount++;
                 if (input[i] <= sum)
                 {
                     lastIndex = i;
@@ -25,7 +26,10 @@ namespace TwoSum
                 }
             }
 
-            return GetResultText(lastIndex, input, sum);
+            var result = GetResultText(lastIndex, input, sum);
+            iterationCount = _iterationCount;
+
+            return result;
         }
 
         private static string GetResultText(int lastIndex, int[] input, int sum)
@@ -34,6 +38,7 @@ namespace TwoSum
             {
                 for (int secondIdx = firstIdx + 1; secondIdx <= lastIndex; secondIdx++)
                 {
+                    _iterationCount++;
                     var computedSum = input[firstIdx] + input[secondIdx];
                     if (computedSum == sum)
                     {

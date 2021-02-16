@@ -9,7 +9,7 @@ namespace TwoSum
     {
         static void Main(string[] args)
         {
-            var inputSmall = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            var inputSmall = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20};
 
             var input = new[]
             {
@@ -114,22 +114,37 @@ namespace TwoSum
                 23, 673, 435, 89, 416, 940, 243, 882, 746, 920
             };
             var suma = 1999;
+
+            DoTheDew(inputSmall, 21);
+
+            Console.WriteLine();
+
+            DoTheDew(input, suma);
+
+            Console.WriteLine();
+
+            DoTheDew(inputUnsorted, suma);
+        }
+
+        private static void DoTheDew(int[] inputArray, int sum)
+        {
             var sw = Stopwatch.StartNew();
 
-            Console.WriteLine(FirstVersion.GetResult(inputSmall, suma));
+            Console.WriteLine("prima versiune " + FirstVersion.GetResult(inputArray, sum, out var iterationCount) + $" in {iterationCount} iterations");
             sw.Stop();
             Console.WriteLine(sw.Elapsed + "-" + sw.ElapsedMilliseconds);
 
             sw.Restart();
 
-            Console.WriteLine(SecondVersion.GetResults(inputSmall, suma));
+            Console.WriteLine("a doua versiune " + SecondVersion.GetResults(inputArray, sum, out iterationCount) + $" in {iterationCount} iterations");
 
             sw.Stop();
             Console.WriteLine(sw.Elapsed + "-" + sw.ElapsedMilliseconds);
 
             sw.Restart();
 
-            Console.WriteLine(ThirdVersion.GetResultsByDivide(inputSmall, suma));
+            //this always assumes that the array is ordered
+            Console.WriteLine("a treia versiune " + ThirdVersion.GetResultsByDivide(inputArray, sum, out iterationCount) + $" in {iterationCount} iterations");
 
             sw.Stop();
             Console.WriteLine(sw.Elapsed + "-" + sw.ElapsedMilliseconds);
